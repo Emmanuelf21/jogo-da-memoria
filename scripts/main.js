@@ -18,6 +18,8 @@ let board = new BoardManager("board", 50, card);
 let menu = document.getElementById('menu');
 let select = document.getElementById('numCards');
 let start = document.getElementById('start');
+let victory = document.getElementById('victory');
+let playAgain = document.getElementById('playAgain');
 
 // Configuring the menu
 for (let i = 4; i <= 10; i+=2) {//From 4 to 10
@@ -41,10 +43,18 @@ start.addEventListener('click', ()=>{
 });
 
 board.node.addEventListener('click',()=>{
-   if(board.check()){
-    setTimeout(() => {
-        menu.classList.remove('hidden');
-        board.node.classList.add('hidden');
-    }, 2000);
-   } 
+   if (board.check()) {
+        setTimeout(() => {
+            board.node.classList.add('hidden');
+            victory.classList.remove('hidden');
+        }, 500);
+    }
 })
+
+playAgain.addEventListener('click', () => {
+    card.flippedCards.clear();
+    board.clear();
+
+    victory.classList.add('hidden');
+    menu.classList.remove('hidden');
+});
