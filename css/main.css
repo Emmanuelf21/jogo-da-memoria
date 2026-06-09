@@ -139,6 +139,10 @@ h1 {
     cursor: pointer;
 }
 
+#attempts{
+	font-size: 1.4rem;
+	margin-left: 5px;
+}
 /* ==========================
    RESPONSIVIDADE MOBILE
 ========================== */
@@ -175,14 +179,19 @@ h1 {
     }
 
     /* Tela de vitória */
-    #victory h1 {
+    #victory h1, #defeat h1 {
         font-size: 2rem;
         text-align: center;
         padding: 0 20px;
     }
 
-    #victory button {
+    #victory button, #defeat button {
         font-size: 1rem;
         padding: 10px 20px;
     }
+
+	#attempts{
+		font-size: 1.6rem;
+		margin-left: 1rem;
+	}
 }
