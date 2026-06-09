@@ -89,3 +89,35 @@
 .flip-card-inner.matched .flip-card-back>img{
     opacity: .2;
 }
+
+/* ==========================
+   RESPONSIVIDADE MOBILE
+========================== */
+@media screen and (max-width: 768px){
+
+    #board{
+        padding: 1vmin;
+        gap: 0.5vmin;
+    }
+
+    .flip-card{
+        min-width: 28px;
+        min-height: 28px;
+    }
+
+    .flip-card-inner{
+        box-shadow: 0 2px 5px rgba(0,0,0,.6);
+    }
+}
+
+@media screen and (max-width: 480px){
+
+    #board{
+        gap: 0.3vmin;
+    }
+
+    .flip-card{
+        min-width: 24px;
+        min-height: 24px;
+    }
+}
