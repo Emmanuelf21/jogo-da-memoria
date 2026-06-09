@@ -76,11 +76,17 @@ class CardManager {
         // Choose the function to end the turn
         // If is a match, disable cards
         // else unflip the cards
+        const matched = this.check();
+
         let handler = this.check() ? (card)=>this.disable(card): this.unFlip;
         // Run the handler in both flipped cards
         this.flippedCards.forEach(handler);
         // Empty the set
         this.flippedCards.clear();
+
+        if(!matched){
+            document.dispatchEvent(new CustomEvent('wrongMatch'));
+        }
     }
 
 }

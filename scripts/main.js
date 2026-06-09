@@ -20,6 +20,9 @@ let select = document.getElementById('numCards');
 let start = document.getElementById('start');
 let victory = document.getElementById('victory');
 let playAgain = document.getElementById('playAgain');
+let attempts = document.getElementById('attempts');
+let defeat = document.getElementById('defeat');
+let playAgainDefeat = document.getElementById('playAgainDefeat');
 
 // Configuring the menu
 for (let i = 4; i <= 10; i+=2) {//From 4 to 10
@@ -39,15 +42,24 @@ for (let i = 4; i <= 10; i+=2) {//From 4 to 10
 start.addEventListener('click', ()=>{
     menu.classList.add('hidden');
     board.node.classList.remove('hidden');
+
+    attempts.classList.remove('hidden');
+
     board.fill(select.value);
 });
 
 board.node.addEventListener('click',()=>{
-   if (board.check()) {
-        setTimeout(() => {
-            board.node.classList.add('hidden');
-            victory.classList.remove('hidden');
-        }, 500);
+    if(card.flippedCards.size === 0){
+
+        const matchedCards = document.getElementsByClassName('matched').length;
+
+        if (board.check()) {
+                setTimeout(() => {
+                    board.node.classList.add('hidden');
+                    attempts.classList.add('hidden');
+                    victory.classList.remove('hidden');
+                }, 500);
+            }
     }
 })
 
@@ -57,4 +69,26 @@ playAgain.addEventListener('click', () => {
 
     victory.classList.add('hidden');
     menu.classList.remove('hidden');
+});
+
+document.addEventListener('wrongMatch', () => {
+
+    if(board.loseAttempt()){
+
+        board.node.classList.add('hidden');
+        attempts.classList.add('hidden');
+
+        defeat.classList.remove('hidden');
+    }
+
+});
+
+playAgainDefeat.addEventListener('click', () => {
+
+    card.flippedCards.clear();
+    board.clear();
+
+    defeat.classList.add('hidden');
+    menu.classList.remove('hidden');
+
 });

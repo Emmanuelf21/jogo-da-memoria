@@ -116,7 +116,8 @@ h1 {
 	display: none !important;
 }
 
-#victory {
+#victory,
+#defeat {
     position: fixed;
     inset: 0;
 
@@ -130,7 +131,8 @@ h1 {
     z-index: 1000;
 }
 
-#victory button {
+#victory button,
+#defeat button {
     margin-top: 20px;
     padding: 12px 24px;
     font-size: 18px;

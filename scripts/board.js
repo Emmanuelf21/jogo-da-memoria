@@ -12,6 +12,9 @@ class BoardManager{
     numImgs; // Number of different images in the library
     curNumCards; // Current number of cards in the board
 
+    maxAttempts = 0;
+    attempts = 0;
+
     // Constructor
     constructor(id, numImgs, cardManager){
         //Get the board node using the received id
@@ -29,6 +32,11 @@ class BoardManager{
 
     //Add the received number of cards to the board
     fill(numberCards){
+        this.maxAttempts = this.getAttempts(numberCards);
+        this.attempts = this.maxAttempts;
+
+        document.getElementById("attemptsValue").textContent = this.attempts;
+
         // Test if there isn't enough images
         if(numberCards>2*this.numImgs){
             // Show error message
@@ -85,5 +93,24 @@ class BoardManager{
         let flipped = document.getElementsByClassName('matched');
         // Return if it is equal the expected number of cards
         return flipped.length >= this.curNumCards;
+    }
+
+    getAttempts(numberCards){
+        switch(numberCards){
+            case '16': return 6;
+            case '36': return 12;
+            case '64': return 18;
+            case '100': return 24;
+            default: return Math.floor(numberCards / 8);
+        }
+    }
+
+    loseAttempt(){
+        this.attempts--;
+
+        document.getElementById("attemptsValue").textContent =
+            this.attempts;
+
+        return this.attempts <= 0;
     }
 }

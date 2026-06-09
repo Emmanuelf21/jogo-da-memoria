@@ -25,6 +25,10 @@
             </div>
         </div>
     </template>
+    <!-- Attempts -->
+    <div id="attempts" class="hidden">
+        Tentativas: <span id="attemptsValue">0</span>
+    </div>
     <!-- Board -->
     <div id="board" class="hidden"></div>
     <!-- Menu -->
@@ -40,7 +44,11 @@
         <h1>🎉 Você venceu! 🎉</h1>
         <button id="playAgain">Jogar Novamente</button>
     </div>
-    
+    <!-- Lose screen -->
+    <div id="defeat" class="hidden">
+        <h1>😢 Você perdeu!</h1>
+        <button id="playAgainDefeat">Tentar Novamente</button>
+    </div>
 </body>
 
 </html>
