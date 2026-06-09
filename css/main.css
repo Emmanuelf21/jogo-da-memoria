@@ -12,7 +12,11 @@ html {
 
 body {
 	/*Colors*/
-	background-color: midnightblue;
+	background:
+        radial-gradient(circle at center,
+        #16213e 0%,
+        #0f3460 40%,
+        #0b1020 100%);
 	color: white;
 
 	/*Sizing*/

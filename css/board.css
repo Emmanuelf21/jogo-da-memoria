@@ -7,7 +7,11 @@
 /* Rules for the game board */
 #board{
     /*Colors*/
-    background-color: navy;
+    background:
+        radial-gradient(circle at center,
+        #16213e 0%,
+        #0f3460 40%,
+        #0b1020 100%);
 
     /*Sizing*/
     height: 100%;
