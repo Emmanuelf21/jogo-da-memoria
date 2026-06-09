@@ -90,34 +90,21 @@
     opacity: .2;
 }
 
-/* ==========================
-   RESPONSIVIDADE MOBILE
-========================== */
 @media screen and (max-width: 768px){
+    .flip-card{
+        width: 100%;
+        max-width: 90px;
+        aspect-ratio: 1;
+        height: auto;
+    }
 
     #board{
-        padding: 1vmin;
-        gap: 0.5vmin;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+        gap: 10px;
+        padding: 10px;
+        height: auto;
+        
     }
 
-    .flip-card{
-        min-width: 28px;
-        min-height: 28px;
-    }
-
-    .flip-card-inner{
-        box-shadow: 0 2px 5px rgba(0,0,0,.6);
-    }
-}
-
-@media screen and (max-width: 480px){
-
-    #board{
-        gap: 0.3vmin;
-    }
-
-    .flip-card{
-        min-width: 24px;
-        min-height: 24px;
-    }
 }

@@ -149,10 +149,11 @@ h1 {
 
     body{
         width: 100vw;
-        min-width: 100vw;
-        max-width: 100vw;
-        min-height: 100vh;
-        aspect-ratio: auto;
+        height: 100vh;
+        min-width: unset;
+        max-width: unset;
+        aspect-ratio: unset;
+        margin: 0;
     }
 
     h1 {
