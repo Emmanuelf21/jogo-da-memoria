@@ -1,7 +1,7 @@
 // Class to manage board actions
-class BoardManager{
-    // Attributes
 
+class BoardManager {
+    // Attributes
     //Dependencies
     cardManager; // Object to manipulate cards inside the board
 
@@ -16,7 +16,7 @@ class BoardManager{
     attempts = 0;
 
     // Constructor
-    constructor(id, numImgs, cardManager){
+    constructor(id, numImgs, cardManager) {
         //Get the board node using the received id
         this.node = document.getElementById(id);
 
@@ -26,32 +26,32 @@ class BoardManager{
     }
 
     // Clear the board removing all cards
-    clear(){
+    clear() {
         this.node.innerHTML = "";
     }
 
     //Add the received number of cards to the board
-    fill(numberCards){
+    fill(numberCards) {
         this.maxAttempts = this.getAttempts(numberCards);
         this.attempts = this.maxAttempts;
 
         document.getElementById("attemptsValue").textContent = this.attempts;
 
         // Test if there isn't enough images
-        if(numberCards>2*this.numImgs){
+        if (numberCards > 2 * this.numImgs) {
             // Show error message
             console.error(`Error: Not enough images for ${numberCards} cards.`);
             // Adjust the numer of cards and continue the game
-            numberCards = 2*this.numImgs;
+            numberCards = 2 * this.numImgs;
         }
         // numberCards should be an int
-        numberCards=parseInt(numberCards);
+        numberCards = parseInt(numberCards);
         // Setting curNumCards
         this.curNumCards = numberCards;
-        
+
         this.clear(); // Reset the board
-        this.genRamdonList(numberCards).forEach((number)=>{
-             // Place one card in the board based in the card number
+        this.genRamdonList(numberCards).forEach((number) => {
+            // Place one card in the board based in the card number
             this.addCard(this.cardManager.gen(number));
         })
 
@@ -59,58 +59,64 @@ class BoardManager{
     }
 
     // Adjust the css to fit all cards in the board
-    adjustCss(){
+    adjustCss() {
         // Calculating the number of columns
         let cols = Math.sqrt(this.curNumCards);
         // Calculating the card size
-        let size = (100/cols - 1);
+        let size = (100 / cols - 1);
         // Turnning the size into css a string
-        size+='vmin';
+        size += 'vmin';
 
         //Setting the css properties
         document.documentElement.style.setProperty("--numCols", cols);
-        document.documentElement.style.setProperty("--size", size); 
+        document.documentElement.style.setProperty("--size", size);
     }
 
 
     //Add one card to the board
-    addCard(card){
+    addCard(card) {
         this.node.appendChild(card); // Append card to the board
     }
 
     // Generate random list
-    genRamdonList(size){
+    genRamdonList(size) {
         // Create a list with the numbers 1 to size
-        let list = Array(size/2).fill().map((_,i)=>i+1);
+        let list = Array(size / 2).fill().map((_, i) => i + 1);
         // Double that list and shuffle it
-        list = [...list,...list].sort(()=>Math.random()-0.5);
+        list = [...list, ...list].sort(() => Math.random() - 0.5);
         return list;
     }
 
     // Check if all cards are found
-    check(){
+    check() {
         // Get all found cards
         let flipped = document.getElementsByClassName('matched');
         // Return if it is equal the expected number of cards
         return flipped.length >= this.curNumCards;
     }
 
-    getAttempts(numberCards){
-        switch(numberCards){
-            case '16': return 6;
-            case '36': return 12;
-            case '64': return 18;
-            case '100': return 24;
-            default: return Math.floor(numberCards / 8);
+    getAttempts(numberCards) {
+        switch (numberCards) {
+            case '16':
+                return 6;
+            case '36':
+                return 12;
+            case '64':
+                return 18;
+            case '100':
+                return 24;
+            default:
+                return Math.floor(numberCards / 8);
         }
     }
 
-    loseAttempt(){
+    loseAttempt() {
+
         this.attempts--;
 
-        document.getElementById("attemptsValue").textContent =
-            this.attempts;
+        document.getElementById("attemptsValue").textContent = this.attempts;
 
+        
         return this.attempts <= 0;
     }
 }
