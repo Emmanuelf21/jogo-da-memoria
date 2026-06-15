@@ -98,13 +98,13 @@ class BoardManager {
     getAttempts(numberCards) {
         switch (numberCards) {
             case '16':
-                return 6;
+                return 8;
             case '36':
-                return 12;
-            case '64':
                 return 18;
+            case '64':
+                return 32;
             case '100':
-                return 24;
+                return 50;
             default:
                 return Math.floor(numberCards / 8);
         }

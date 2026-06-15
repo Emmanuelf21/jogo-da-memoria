@@ -25,15 +25,15 @@ class CardManager {
         clone.children[0].addEventListener('click',
             event => this.onClick(event)
         );
-        
+
         return clone; // Return the modified clone
     }
 
     //Handle click events
     onClick(event) {
-        if(this.flippedCards.size >= 2 ){
+        if (this.flippedCards.size >= 2) {
             this.endTurn();
-        }else{
+        } else {
             this.flip(event.target);
         }
     }
@@ -42,6 +42,8 @@ class CardManager {
 
     //Flip the received card
     flip(cardNode) {
+        flipSound.currentTime = 0;
+        flipSound.play();
         cardNode.children[0].classList.add('selected');
         // Add the card to the set for checking later
         this.flippedCards.add(cardNode);
@@ -59,32 +61,32 @@ class CardManager {
     }
 
     // Turn methods
-    
+
     // Check if is a match
-    check(){
+    check() {
         // Turn the set into an array and map it
-        let urls = [...this.flippedCards].map((card)=>{
+        let urls = [...this.flippedCards].map((card) => {
             // Return the src of the image
             return card.querySelector('img').src;
         })
         // Return true only if the url are equals
         return urls[0] == urls[1];
     }
-    
+
     // Finish a turn
-    endTurn(){
+    endTurn() {
         // Choose the function to end the turn
         // If is a match, disable cards
         // else unflip the cards
         const matched = this.check();
 
-        let handler = this.check() ? (card)=>this.disable(card): this.unFlip;
+        let handler = this.check() ? (card) => this.disable(card) : this.unFlip;
         // Run the handler in both flipped cards
         this.flippedCards.forEach(handler);
         // Empty the set
         this.flippedCards.clear();
 
-        if(!matched){
+        if (!matched) {
             document.dispatchEvent(new CustomEvent('wrongMatch'));
         }
     }
