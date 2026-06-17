@@ -69,7 +69,7 @@ board.node.addEventListener('click', () => {
             winSound.currentTime = 0;
             winSound.play();
             bgMusic.pause();
-            
+
             setTimeout(() => {
                 board.node.classList.add('hidden');
                 attempts.classList.add('hidden');

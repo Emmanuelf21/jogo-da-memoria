@@ -141,11 +141,41 @@ h1 {
     padding: 12px 24px;
     font-size: 18px;
     cursor: pointer;
+	border-radius: 5px;
 }
 
 #attempts{
 	font-size: 1.4rem;
 	margin-left: 5px;
+}
+
+.container-redirecionamento{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	width: 90%;
+	text-align: center;
+
+}
+
+.container-redirecionamento a{
+	text-decoration: none;
+	font-weight: 700;
+	font-size: 1.2rem;
+	color: white;
+	
+	width: fit-content;
+	height: fit-content;
+	
+	padding: 10px 15px;
+	border-radius: 5px;
+	background-color: rgba(13, 180, 10, 0.93);
+	border: 2px solid gray;
 }
 /* ==========================
    RESPONSIVIDADE MOBILE
